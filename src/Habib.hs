@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 -- a very simple parser for very rigid bibentries
-module Lib where
+module Habib where
 
 import Data.Attoparsec.Text
 import Data.Char
@@ -37,7 +37,6 @@ data Entrytype =
   Entrytype
     { compulsory :: [Field]
     , optional :: Maybe [Maybe Field]
-    , ignored :: [Field]
     }
   deriving (Eq, Show)
 
@@ -47,7 +46,6 @@ article =
     { compulsory = [Author, Title, Journal, Year]
     , optional =
         Just [Just Volume, Just Number, Just Pages, Just Month, Just Note]
-    , ignored = []
     }
 
 someFunc :: IO ()

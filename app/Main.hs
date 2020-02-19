@@ -5,7 +5,7 @@ module Main where
 import Data.Attoparsec.Text
 import Data.Char
 
--- import Lib
+-- import Habib
 entrytype :: Parser String
 entrytype = do
   entryMarker <- char '@'
@@ -13,4 +13,8 @@ entrytype = do
   return bibentryType
 
 main :: IO ()
-main = print $ parseOnly entrytype "@article{}"
+main = do
+  let fileName = "shelah.bib"
+  input <- readFile fileName
+  putStrLn input
+  -- either putStrLn putStrLn $ parseOnly entrytype <$> (head . lines) input

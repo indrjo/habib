@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 8f813bc7ea966bd4dd152dcc29dcd089080720691f444a5f1fe8f70a0da2a88c
+-- hash: 751f78835672eb0123c165bf17215221b8de21639268a219a2b105b70a2399e2
 
 name:           habib
 version:        0.1.0.0
@@ -27,42 +27,45 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Habib
   other-modules:
-      Paths_bibi_hs
+      Paths_habib
   hs-source-dirs:
       src
   build-depends:
       attoparsec
     , base >=4.7 && <5
     , bibtex
+    , text
   default-language: Haskell2010
 
 executable habib-exe
   main-is: Main.hs
   other-modules:
-      Paths_bibi_hs
+      Paths_habib
   hs-source-dirs:
       app
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       attoparsec
     , base >=4.7 && <5
-    , habib
     , bibtex
+    , habib
+    , text
   default-language: Haskell2010
 
 test-suite habib-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
-      Paths_bibi_hs
+      Paths_habib
   hs-source-dirs:
       test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       attoparsec
     , base >=4.7 && <5
-    , habib
     , bibtex
+    , habib
+    , text
   default-language: Haskell2010
