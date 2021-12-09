@@ -1,5 +1,7 @@
 # habib حبيب
 
+<img align="right" width="125px" height="125px" alt="Arabic frieze." src="https://github.com/tetrapharmakon/habib/raw/master/frieze.png">
+
 [![CI tests status badge][build-shield]][build-url]
 [![Latest release badge][hackage-shield]][hackage-url]
 [![Dependencies badge][dependencies-shield]][dependencies-shield]
