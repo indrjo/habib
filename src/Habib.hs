@@ -3,8 +3,9 @@
 -- a very simple parser for very rigid bibentries
 module Habib where
 
-import Data.Attoparsec.Text
+import qualified Data.Attoparsec.Text as A
 import Data.Char
+import qualified Data.Text as T
 
 data Field
   = Address
@@ -35,18 +36,33 @@ data Field
 
 data Entrytype =
   Entrytype
-    { compulsory :: [Field]
-    , optional :: Maybe [Maybe Field]
+    { req :: [Field]
+    , opt :: Maybe [Maybe Field]
     }
   deriving (Eq, Show)
 
 article :: Entrytype
 article =
   Entrytype
-    { compulsory = [Author, Title, Journal, Year]
-    , optional =
+    { req = [Author, Title, Journal, Year]
+    , opt =
         Just [Just Volume, Just Number, Just Pages, Just Month, Just Note]
     }
+
+at :: A.Parser Char
+at = A.char '@'
+
+bgroup :: A.Parser Char
+bgroup = A.char '{'
+
+egroup :: A.Parser Char
+egroup = A.char '}'
+
+entryType :: A.Parser T.Text
+entryType = at *> bibType <* bgroup
+
+bibType :: A.Parser T.Text
+bibType = A.takeWhile (/= '{')
 
 someFunc :: IO ()
 someFunc = putStrLn "someFunc"
