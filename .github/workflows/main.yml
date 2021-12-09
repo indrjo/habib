@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Cache stack root
+        uses: actions/cache@v2
+        with:
+          path: /home/runner/.stack
+          key: stack-root-${{ hashFiles('package.yaml', 'stack.yaml', 'stack.yaml.lock') }}
+          restore-keys: stack-root-
+      - name: Cache stack work
+        uses: actions/cache@v2
+        with:
+          path: ${{ github.workspace }}/.stack-work
+          key: stack-work-${{ hashFiles('package.yaml', 'stack.yaml', 'stack.yaml.lock') }}
+          restore-keys: stack-work-
+      - name: Run tests
+        run: stack test
