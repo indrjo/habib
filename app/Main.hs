@@ -6,9 +6,9 @@ import Data.Attoparsec.Text
 import Data.Char
 
 -- import Habib
-articleP :: Parser article
-articleP = do
-  _a
+-- articleP :: Parser article
+-- articleP = do
+--   _a
 
 main :: IO ()
 main = undefined
