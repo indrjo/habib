@@ -16,7 +16,9 @@
 [license-shield]: https://img.shields.io/github/license/tetrapharmakon/habib
 [license-url]: https://github.com/tetrapharmakon/habib/blob/master/LICENSE "License"
 
-My beloved bib parser
+My beloved bib parser.
+
+This utility translates BibTeX files back and forth to an easily editable JSON format.
 
 ## Development
 
