@@ -1,73 +1,62 @@
-cabal-version: 1.12
+cabal-version:      3.0
+name:               habib
+version:            0.1.0.0
+-- synopsis:
+-- description:
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             tetrapharmakon
+maintainer:         mail@mail.com
+-- copyright:
+category:           Text
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+-- extra-source-files:
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
---
--- see: https://github.com/sol/hpack
---
--- hash: db67e9ebb6fb66da4534fdceebe3f3bff6e3c58b17c70a576ad72bb9757088cb
-
-name:           habib
-version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/habib#readme>
-homepage:       https://github.com/githubuser/habib#readme
-bug-reports:    https://github.com/githubuser/habib/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2020 Author name here
-license:        BSD3
-license-file:   LICENSE
-build-type:     Simple
-extra-source-files:
-    README.md
-    ChangeLog.md
-
-source-repository head
-  type: git
-  location: https://github.com/githubuser/habib
+common warnings
+    ghc-options: -Wall -O2
 
 library
-  exposed-modules:
-      Habib
-  other-modules:
-      Paths_habib
-  hs-source-dirs:
-      src
-  build-depends:
-      attoparsec
-    , base >=4.7 && <5
-    , bibtex
-    , text
-  default-language: Haskell2010
+    import:           warnings
+    exposed-modules:  Text.Habib.Parsers
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    attoparsec >= 0.14.4,
+                      base ^>=4.17.2.1,
+                      parsec >= 3.1.16.1,
+                      parsec >= 3.1.16.1,
+                      text >= 2.0.2
+    hs-source-dirs:   src
+    default-language: Haskell2010
 
-executable habib-exe
-  main-is: Main.hs
-  other-modules:
-      Paths_habib
-  hs-source-dirs:
-      app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
-  build-depends:
-      attoparsec
-    , base >=4.7 && <5
-    , bibtex
-    , habib
-    , text
-  default-language: Haskell2010
+executable habib
+    import:           warnings
+    main-is:          Main.hs
+    -- other-modules:
+    -- other-extensions:
+    build-depends:    attoparsec >= 0.14.4,
+                      base ^>=4.17.2.1,
+                      parsec >= 3.1.16.1,
+                      parsec >= 3.1.16.1,
+                      text >= 2.0.2,
+                      habib
 
-test-suite habib-test
-  type: exitcode-stdio-1.0
-  main-is: Spec.hs
-  other-modules:
-      Paths_habib
-  hs-source-dirs:
-      test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
-  build-depends:
-      attoparsec
-    , base >=4.7 && <5
-    , bibtex
-    , habib
-    , hspec
-    , hspec-attoparsec
-    , text
-  default-language: Haskell2010
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+--test-suite habib-test
+--    import:           warnings
+--    default-language: Haskell2010
+--    -- other-modules:
+--    -- other-extensions:
+--    type:             exitcode-stdio-1.0
+--    hs-source-dirs:   test
+--    main-is:          Main.hs
+--    build-depends:
+--                  attoparsec >= 0.14.4,
+--                  base ^>=4.17.2.1,
+--                  habib,
+--                  parsec >= 3.1.16.1,
+--                  parsec >= 3.1.16.1,
+--                  text >= 2.0.2
+
